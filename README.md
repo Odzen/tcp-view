@@ -1,5 +1,5 @@
 # TCP-VIEW
-This a custom view for the project TCP Custom Protocol (`https://github.com/Odzen/TCPCustomFileServer`) this web interface shows which clients are connected, in which channels and file delivery statistics.
+This a custom view for the project [TCP Custom Protocol](https://github.com/Odzen/TCPCustomFileServer) this web interface shows which clients are connected, in which channels and file delivery statistics.
 
 
 ## Project setup
