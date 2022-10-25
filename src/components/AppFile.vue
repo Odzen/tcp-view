@@ -2,8 +2,10 @@
 
     <app-container>
       <h2>{{ name }}</h2>
+      <p>Size: {{ address }}</p>
+      <p>Content: {{ content }}</p>
       <p>Address: {{ address }}</p>
-      <p>Channel: {{ channel }}</p>
+      <p>Pipeline: {{ pipeline }}</p>
     </app-container>
 
 </template>
@@ -21,12 +23,20 @@ export default {
       type: String,
       required: true,
     },
+    size: {
+      type: Number,
+      required: true,
+    },
+    content: {
+      type: String,
+      required: true,
+    },
     address: {
       type: String,
       required: true,
     },
-    channel: {
-      type: String,
+    pipeline: {
+      type: Number,
       required: true,
     },
   },

@@ -1,15 +1,28 @@
 <template>
   <div id="app">
+    <h1> Welcome to the TCP Server 🌐</h1>
 
-    <div class="container" v-for="client in clients" :key="client.name">
-       <p v-if="!clients.length" class="loading">Loading Clients...</p>
-      <app-client :name="client.name" :address="client.address" :channel="client.channel" />
+    <div class="clients-container">
+      <h2> Clients </h2>
+      <p v-if="!clients.length" class="loading">Loading Clients...</p>
+      <div  v-for="client in clients" :key="client.name">
+        <app-client :name="client.name" :address="client.address" :channel="client.channel" />
+      </div>
     </div>
 
-    <!-- <div  v-for="file in files" :key="file.name">
+    <div class="files-container">
+      <h2> Files </h2>
       <p v-if="!files.length" class="loading">Loading Files...</p>
-      <h2>{{ file.name }}</h2>
-    </div> -->
+      <div  v-for="file in files" :key="file.content">
+        <app-file
+        :name="file.name"
+        :size="file.size"
+        :content="file.content"
+        :address="file.address"
+        :pipeline="file.pipeline"
+      />
+      </div>
+    </div>
 
   </div>
 </template>
@@ -18,10 +31,12 @@
 
 import axios from 'axios';
 import AppClient from '@/components/AppClient.vue';
+import AppFile from '@/components/AppFile.vue';
 
 export default {
   components: {
     AppClient,
+    AppFile,
   },
 
   data() {
@@ -78,8 +93,21 @@ export default {
 <style lang="scss">
   body {
     font-family: 'Archivo Narrow', sans-serif;
-    background: #1f2d30;
+    background: #8aacb4;
   }
+
+  h1 {
+    margin-top: 40px;
+    color: rgb(0, 0, 0);
+    text-align: center;
+  }
+
+  .loading {
+  color: white;
+  text-align: center;
+  font-size: 20px;
+}
+
   .display {
     display: flex;
     justify-content: center;
@@ -90,4 +118,5 @@ export default {
     @extend .display;
     flex-direction: column;
   }
+
 </style>
