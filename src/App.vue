@@ -76,4 +76,18 @@ export default {
 </script>
 
 <style lang="scss">
+  body {
+    font-family: 'Archivo Narrow', sans-serif;
+    background: #1f2d30;
+  }
+  .display {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+  }
+
+  #app {
+    @extend .display;
+    flex-direction: column;
+  }
 </style>

@@ -1,15 +1,34 @@
 <template>
 
-    <div>
+    <app-container>
       <h2>Name of client: {{ name }}</h2>
       <p>Address: {{ address }}</p>
       <p>Channel: {{ channel }}</p>
-    </div>
+    </app-container>
 
 </template>
 
 <script>
+
+import AppContainer from '@/components/AppContainer.vue';
+
 export default {
-  props: ['name', 'address', 'channel'],
+  components: {
+    AppContainer,
+  },
+  props: {
+    name: {
+      type: String,
+      required: true,
+    },
+    address: {
+      type: String,
+      required: true,
+    },
+    channel: {
+      type: String,
+      required: true,
+    },
+  },
 };
 </script>
