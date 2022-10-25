@@ -1,23 +1,29 @@
 <template>
   <div id="app">
-    <div v-if="!clients.length" class="loading">Loading Clients...</div>
 
-    <div class="clients" v-for="client in clients" :key="client.name">
-      <h2>{{ client.name }}</h2>
+    <div class="container" v-for="client in clients" :key="client.name">
+       <p v-if="!clients.length" class="loading">Loading Clients...</p>
+      <app-client :name="client.name" :address="client.address" :channel="client.channel" />
     </div>
 
-    <div v-if="!files.length" class="loading">Loading Files...</div>
-    <div class="files" v-for="file in files" :key="file.name">
+    <!-- <div  v-for="file in files" :key="file.name">
+      <p v-if="!files.length" class="loading">Loading Files...</p>
       <h2>{{ file.name }}</h2>
-    </div>
+    </div> -->
+
   </div>
 </template>
 
 <script>
 
 import axios from 'axios';
+import AppClient from '@/components/AppClient.vue';
 
 export default {
+  components: {
+    AppClient,
+  },
+
   data() {
     return {
       bottom: false,
@@ -25,6 +31,7 @@ export default {
       files: [],
     };
   },
+
   watch: {
     files() {
       setTimeout(() => {
@@ -42,10 +49,11 @@ export default {
     this.getFiles();
     this.getClients();
   },
+
   methods: {
 
     getFiles() {
-      axios.get('http://localhost:3030/files').then((response) => {
+      axios.get(`http://${process.env.VUE_APP_HOST_BACKEND}:${process.env.VUE_APP_PORT_BACKEND}/files`).then((response) => {
         const filesApi = response.data;
         this.files = filesApi;
       }).catch((error) => {
@@ -55,7 +63,7 @@ export default {
     },
 
     getClients() {
-      axios.get('http://localhost:3030/clients').then((response) => {
+      axios.get(`http://${process.env.VUE_APP_HOST_BACKEND}:${process.env.VUE_APP_PORT_BACKEND}/clients`).then((response) => {
         const clientsApi = response.data;
         this.clients = clientsApi;
       }).catch((error) => {
