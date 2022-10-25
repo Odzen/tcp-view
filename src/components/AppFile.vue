@@ -2,7 +2,7 @@
 
     <app-container>
       <h2>{{ name }}</h2>
-      <p>Size: {{ address }}</p>
+      <p>Size: {{ size }}</p>
       <p>Content: {{ content }}</p>
       <p>Address: {{ address }}</p>
       <p>Pipeline: {{ pipeline }}</p>

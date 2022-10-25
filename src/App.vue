@@ -2,26 +2,22 @@
   <div id="app">
     <h1> Welcome to the TCP Server 🌐</h1>
 
-    <div class="clients-container">
-      <h2> Clients </h2>
+      <h2 class="h2-title"> Clients {{clients.length}}</h2>
       <p v-if="!clients.length" class="loading">Loading Clients...</p>
-      <div  v-for="client in clients" :key="client.name">
+      <div  v-for="client, index  in clients" :key="index">
         <app-client :name="client.name" :address="client.address" :channel="client.channel" />
       </div>
-    </div>
 
-    <div class="files-container">
-      <h2> Files </h2>
+      <h2 class="h2-title"> Files {{files.length}}</h2>
       <p v-if="!files.length" class="loading">Loading Files...</p>
-      <div  v-for="file in files" :key="file.content">
+      <div  v-for="file, index in files" :key="index">
         <app-file
-        :name="file.name"
-        :size="file.size"
-        :content="file.content"
-        :address="file.address"
-        :pipeline="file.pipeline"
+          :name="file.name"
+          :size="file.size"
+          :content="file.content"
+          :address="file.address"
+          :pipeline="file.pipeline"
       />
-      </div>
     </div>
 
   </div>
@@ -41,7 +37,6 @@ export default {
 
   data() {
     return {
-      bottom: false,
       clients: [],
       files: [],
     };
@@ -102,21 +97,29 @@ export default {
     text-align: center;
   }
 
+  .h2-title{
+    font-size: 30px;
+    color: rgb(0, 0, 0);
+    text-align: center;
+  }
+
   .loading {
   color: white;
   text-align: center;
   font-size: 20px;
-}
+  }
 
   .display {
     display: flex;
     justify-content: center;
     align-content: center;
+    text-align: center;
   }
 
   #app {
     @extend .display;
     flex-direction: column;
+
   }
 
 </style>

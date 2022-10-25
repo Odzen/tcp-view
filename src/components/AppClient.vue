@@ -26,7 +26,7 @@ export default {
       required: true,
     },
     channel: {
-      type: String,
+      type: Number,
       required: true,
     },
   },
